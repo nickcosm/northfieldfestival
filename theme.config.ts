@@ -1,23 +1,23 @@
 import { defineThemeConfig } from '@utils/defineThemeConfig'
 import previewImage from '@assets/img/social-preview-image.png'
-import logoImage from '@assets/img/logo.svg'
+import logoImage from '@assets/img/nf-logo.png'
 
 export default defineThemeConfig({
-  name: 'Accessible Astro',
-  id: 'accessible-astro-starter',
+  name: 'Northfield Festival',
+  id: 'northfield-festival',
   logo: logoImage,
   seo: {
-    title: 'Accessible Astro Starter',
+    title: 'Northfield Festival of Music & Speech',
     description:
-      'An Accessible Starter Theme for Astro including several accessibility features and tools to help you build faster.',
-    author: 'Incluud',
+      'Official website for the Northfield Festival of Music & Speech.',
+    author: 'Northfield Festival',
     image: previewImage, // Can also be a string e.g. '/social-preview-image.png',
   },
   colors: {
-    primary: '#d648ff',
-    secondary: '#00d1b7',
-    neutral: '#b9bec4',
-    outline: '#ff4500',
+    primary: '#1c569f',
+    secondary: '#f5f630',
+    neutral: '#e9e6e9',
+    outline: '#fffd29',
   },
   navigation: {
     darkmode: true,
@@ -34,40 +34,28 @@ export default defineThemeConfig({
       },
       {
         type: 'link',
-        label: 'Portfolio',
-        href: '/portfolio',
+        label: 'Applications',
+        href: '/applications',
       },
       {
-        label: 'Features',
+        label: 'Policies & Rules',
         type: 'dropdown',
         items: [
           {
-            label: 'Accessibility statement',
-            href: '/accessibility-statement',
+            label: 'Privacy Policy',
+            href: '/privacy-policy',
           },
           {
-            label: 'Accessible components',
-            href: '/accessible-components',
+            label: 'Child Protection Policy',
+            href: '/child-protection-policy',
           },
           {
-            label: 'Accessible launcher',
-            href: '/accessible-launcher',
+            label: 'Festival Rules',
+            href: '/festival-rules',
           },
           {
-            label: 'Color contrast checker',
-            href: '/color-contrast-checker',
-          },
-          {
-            label: 'Markdown page',
-            href: '/markdown-page',
-          },
-          {
-            label: 'MDX page',
-            href: '/mdx-page',
-          },
-          {
-            label: '404 page',
-            href: '/404',
+            label: "Who's Who",
+            href: '/whos-who',
           },
           {
             label: 'Sitemap',
@@ -80,31 +68,18 @@ export default defineThemeConfig({
         label: 'Contact',
         href: '/contact',
       },
-      {
-        type: 'link',
-        label: 'Go to our GitHub page, opens in new tab',
-        href: 'https://github.com/incluud/accessible-astro-starter',
-        icon: 'lucide:github',
-        external: true,
-        excludeFromLauncher: true,
-      },
     ],
   },
   socials: [
     {
-      label: 'GitHub',
-      href: 'https://github.com/incluud/',
-      icon: 'lucide:github',
+      label: 'X',
+      href: 'https://x.com/NorthfieldFest',
+      icon: 'lucide:x',
     },
     {
-      label: 'Bluesky',
-      href: 'https://bsky.app/profile/incluud.dev',
-      icon: 'lucide:bot-message-square',
-    },
-    {
-      label: 'Open Collective',
-      href: 'https://opencollective.com/incluud',
-      icon: 'lucide:hand-heart',
+      label: 'Facebook',
+      href: 'https://www.facebook.com/NorthfieldFest',
+      icon: 'lucide:facebook',
     },
   ],
 })
