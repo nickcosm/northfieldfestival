@@ -1,0 +1,14 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import { Icon } from 'astro-icon/components'
+---
+
+<DefaultLayout title="Apply Online">
+    <PageHeader title="Apply Online" subtitle="Use the form below to apply for the next festival" bgType="gradient" />
+        <section class="container">
+            <div class="grid grid-cols-1 gap-32">
+                <script src="https://www.cognitoforms.com/f/seamless.js" data-key="eDTbk4IG7k2VkSOrEOxkIA" data-form="1"></script>
+            </div>
+        </section>
+</DefaultLayout>
