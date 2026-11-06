@@ -38,9 +38,9 @@ import { Icon } from 'astro-icon/components'
               in Birmingham.
             </li>
             <li>
-              Affiliation: It is a member festival connected with the broader performance arts network via the <a
+              Affiliation: It is a member festival connected with the broader performance arts network via the <Link
                 href="https://www.federationoffestivals.org.uk/festivals/615"
-                >British and International Federation of Festivals (BIFF)</a
+                isExternal>British and International Federation of Festivals (BIFF)</Link
               >.
             </li>
           </ul>
@@ -52,62 +52,70 @@ import { Icon } from 'astro-icon/components'
           Festival day, please email info@northfieldfestival.org.uk for more information.
         </p>
         <p>
-          If you would like to support the Festival by becoming a Friend, please complete the form here. <a
-            href="https://forms.gle/Qod4YgdQoyQhUeat7">here</a
+          If you would like to support the Festival by becoming a Friend, please complete the form here. <Link
+            href="https://forms.gle/Qod4YgdQoyQhUeat7"
+            isExternal>here</Link
           >.
         </p>
-        <h2>Officers &amp; Officials</h2>
+        <Heading level="h2">Officers &amp; Officials</Heading>
         <p><strong>President</strong>:<br />Philip Dukes F.G.S.M., A.R.A.M.</p>
         <p><strong>Hon. Vice President</strong>:<br />Mrs Doreen Baggett</p>
-        <h5 id="mcetoc_1e9bgde4m1">Friends of Northfield Festival</h5>
+        <Heading level="h3">Friends of Northfield Festival</Heading>
         <p>
           Sally Allsop, Neil & Doreen Baggett, Miriam Banting, Mr Roger Barber, Crystal Chan, Mr Alan Cull, Mr Martin
           Cull Amit Deshpande, Mr Philip Dukes, Sheng Fu Yiru Jia & Yong Sheng Ge, Margaret Hanson, Pei-Chieh Hsieh,
-          Shen Jiang & Ying Zhou, Evelyn Khee, Raj Korotania, Mr Clive Lee, Lan Mi, Miss Carol Millward, Jill Nash, Billy Bui
-          & Estelle Nguyen, Mrs Mary Pipe, Mr & Mrs John D. Smith, John & Carole Surtees, Vale Pianos, Mr Peter Williams, Mrs
-          Brenda Wise, Alvyn Wongso & Wen Leong, Mengshai Yuan, Sang-Hoon Yeo & Diane Hwang, Liyun & Shan He Zhang.
+          Shen Jiang & Ying Zhou, Evelyn Khee, Raj Korotania, Mr Clive Lee, Lan Mi, Miss Carol Millward, Jill Nash,
+          Billy Bui & Estelle Nguyen, Mrs Mary Pipe, Mr & Mrs John D. Smith, John & Carole Surtees, Vale Pianos, Mr
+          Peter Williams, Mrs Brenda Wise, Alvyn Wongso & Wen Leong, Mengshai Yuan, Sang-Hoon Yeo & Diane Hwang, Liyun &
+          Shan He Zhang.
         </p>
 
-        <h2>Charities that support the festival</h2>
-        <p>
-          The William A Cadbury Trust, The M &amp; H Cadbury Trust, Baron Davenport's Charity, The Grimmitt Trust
-        </p>
-        <h2>Festival Committee</h2>
+        <Heading level="h2">Charities that support the festival</Heading>
+        <p>The William A Cadbury Trust, The M &amp; H Cadbury Trust, Baron Davenport's Charity, The Grimmitt Trust</p>
+        <Heading level="h2">Festival Committee</Heading>
 
-        <h3>Chair</h3>
+        <Heading level="h3">Chair</Heading>
         <p>
-          <strong>Ms Eloise Akehurst</strong><br /><a class="icon-envelope" name="lucide:mail"></a><a
-            href="mailto:info@northfieldfestival.org.uk">Send Email</a
-          ><br /><a class="icon-phone-sign" name="lucide:phone"></a><strong>Phone:</strong> 0121 471 1583
+          <strong>Ms Eloise Akehurst</strong><br /><Icon aria-hidden="true" name="lucide:mail" size={16} /><Link
+            href="mailto:info@northfieldfestival.org.uk">Send Email</Link
+          ><br /><Icon aria-hidden="true" name="lucide:phone" size={16} /><strong>Phone:</strong> <Link
+            href="tel:01214711583">0121 471 1583</Link
+          >
         </p>
-        <h3>Vice Chair</h3>
+        <Heading level="h3">Vice Chair</Heading>
         <p>
-          <strong>Mrs L Akehurst</strong><br /><a class="icon-envelope" name="lucide:mail"></a><a
-            href="mailto:lucy.akehurst@gmail.com">Send Email</a
-          ><br /><a class="icon-phone-sign" name="lucide:phone"></a><strong>Phone:</strong> 0121 471 1583
+          <strong>Mrs L Akehurst</strong><br /><Icon aria-hidden="true" name="lucide:mail" size={16} /><Link
+            href="mailto:lucy.akehurst@gmail.com">Send Email</Link
+          ><br /><Icon aria-hidden="true" name="lucide:phone" size={16} /><strong>Phone:</strong> <Link
+            href="tel:01214711583">0121 471 1583</Link
+          >
         </p>
-        <h3>Treasurer</h3>
+        <Heading level="h3">Treasurer</Heading>
         <p>
-          <strong>Mrs Lin Le</strong><br /><a class="icon-envelope" name="lucide:mail"></a><a
-            href="mailto:chrisslele@hotmail.com">Send Email</a
-          ><br /><strong><a class="icon-phone-sign" name="lucide:phone"></a>Phone:</strong> 0121 476 6182
+          <strong>Mrs Lin Le</strong><br /><Icon aria-hidden="true" name="lucide:mail" size={16} /><Link
+            href="mailto:chrisslele@hotmail.com">Send Email</Link
+          ><br /><Icon aria-hidden="true" name="lucide:phone" size={16} /><strong>Phone:</strong> <Link
+            href="tel:01214766182">0121 476 6182</Link
+          >
         </p>
-        <h3>Secretary</h3>
+        <Heading level="h3">Secretary</Heading>
         <p>
-          <strong>Mrs Justine Liu</strong><br /><a class="icon-envelope" name="lucide:mail"></a><a
-            href="mailto:justineyyliu@gmail.com">Send Email</a
-          ><br /><a class="icon-phone-sign" name="lucide:phone"></a><strong>Phone:</strong> 01564 771 287
+          <strong>Mrs Justine Liu</strong><br /><Icon aria-hidden="true" name="lucide:mail" size={16} /><Link
+            href="mailto:justineyyliu@gmail.com">Send Email</Link
+          ><br /><Icon aria-hidden="true" name="lucide:phone" size={16} /><strong>Phone:</strong> <Link
+            href="tel:01564771287">01564 771 287</Link
+          >
         </p>
-        <h2>Members</h2>
+        <Heading level="h2">Members</Heading>
         <p>Mrs Miriam Banting</p>
         <p>Mrs Pat Finney</p>
         <p>Mrs Jas Sandhu</p>
         <p>Mrs Ann Tran</p>
-        <h2>Committee Associates</h2>
+        <Heading level="h2">Committee Associates</Heading>
         <p>Mr Pat Akehurst</p>
         <p>Mrs Caroline Wright</p>
-        
-        <h2>Contact Information</h2>
+
+        <Heading level="h2">Contact Information</Heading>
         <div class="gap-2xs flex items-center">
           <Icon aria-hidden="true" name="lucide:phone" size={20} class="shrink-0" />
           <p>
