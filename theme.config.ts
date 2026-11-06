@@ -29,6 +29,11 @@ export default defineThemeConfig({
       },
       {
         type: 'link',
+        label: 'About',
+        href: '/about',
+      },
+      {
+        type: 'link',
         label: 'Blog',
         href: '/blog',
       },
@@ -52,10 +57,6 @@ export default defineThemeConfig({
           {
             label: 'Festival Rules',
             href: '/festival-rules',
-          },
-          {
-            label: "Who's Who",
-            href: '/whos-who',
           },
           {
             label: 'Sitemap',

@@ -1,14 +1,7 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
-import {
-  Form,
-  Input,
-  Button,
-  Textarea,
-  Heading,
-  Link,
-} from 'accessible-astro-components'
+import { Heading, Link } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
 ---
 
@@ -22,20 +15,101 @@ import { Icon } from 'astro-icon/components'
   <section class="container">
     <div class="grid grid-cols-1 gap-32">
       <div class="space-content">
-        <p>The Northfield Festival of Music and Speech is an annual competitive arts event held in Birmingham, England, focused on educating and fostering the talents of children and young people. </p>
+        <p>
+          The Northfield Festival of Music and Speech is an annual competitive arts event held in Birmingham, England,
+          focused on educating and fostering the talents of children and young people.
+        </p>
         <Heading level="h3">Key Milestones & History</Heading>
         <p class="text-lg">
-       <ul>
-        <li>Establishment & Charity Status: The festival's governing constitution was formally adopted on June 14, 1990 (with subsequent amendments in 1991 and 2003), and it was registered as a UK charity (No. 1003470) on July 19, 1991.</li>
-        <li>Mission: Founded to promote public and youth education in the arts, the festival gives participants the chance to perform live before audiences, receive constructive feedback from professional adjudicators, and gain confidence.</li>
-        <li>Format & Venue: The event features diverse classes spanning music (strings, vocal, piano) and speech and drama. Over recent years, it has been hosted annually at venues such as Bishop Challoner Catholic College in Birmingham.</li>
-        <li>Affiliation: It is a member festival connected with the broader performance arts network via the <a href="https://www.federationoffestivals.org.uk/festivals/615">British and International Federation of Festivals (BIFF)</a>.</li>
-       </ul>
+          <ul>
+            <li>
+              Establishment & Charity Status: The festival's governing constitution was formally adopted on June 14,
+              1990 (with subsequent amendments in 1991 and 2003), and it was registered as a UK charity (No. 1003470) on
+              July 19, 1991.
+            </li>
+            <li>
+              Mission: Founded to promote public and youth education in the arts, the festival gives participants the
+              chance to perform live before audiences, receive constructive feedback from professional adjudicators, and
+              gain confidence.
+            </li>
+            <li>
+              Format & Venue: The event features diverse classes spanning music (strings, vocal, piano) and speech and
+              drama. Over recent years, it has been hosted annually at venues such as Bishop Challoner Catholic College
+              in Birmingham.
+            </li>
+            <li>
+              Affiliation: It is a member festival connected with the broader performance arts network via the <a
+                href="https://www.federationoffestivals.org.uk/festivals/615"
+                >British and International Federation of Festivals (BIFF)</a
+              >.
+            </li>
+          </ul>
+        </p>
+        <Heading level="h3">Get Involved</Heading>
+        <p class="text-lg">
+          Our Festival can only continue to thrive with the support of volunteers and Friends. Our Festival can only
+          continue to thrive with the support of volunteers and Friends. If you would like to volunteer to help on the
+          Festival day, please email info@northfieldfestival.org.uk for more information.
+        </p>
+        <p>
+          If you would like to support the Festival by becoming a Friend, please complete the form here. <a
+            href="https://forms.gle/Qod4YgdQoyQhUeat7">here</a
+          >.
+        </p>
+        <h2>Officers &amp; Officials</h2>
+        <p><strong>President</strong>:<br />Philip Dukes F.G.S.M., A.R.A.M.</p>
+        <p><strong>Hon. Vice President</strong>:<br />Mrs Doreen Baggett</p>
+        <h5 id="mcetoc_1e9bgde4m1">Friends of Northfield Festival</h5>
+        <p>
+          Sally Allsop, Neil & Doreen Baggett, Miriam Banting, Mr Roger Barber, Crystal Chan, Mr Alan Cull, Mr Martin
+          Cull Amit Deshpande, Mr Philip Dukes, Sheng Fu Yiru Jia & Yong Sheng Ge, Margaret Hanson, Pei-Chieh Hsieh,
+          Shen Jiang & Ying Zhou, Evelyn Khee, Raj Korotania, Mr Clive Lee, Lan Mi, Miss Carol Millward, Jill Nash, Billy Bui
+          & Estelle Nguyen, Mrs Mary Pipe, Mr & Mrs John D. Smith, John & Carole Surtees, Vale Pianos, Mr Peter Williams, Mrs
+          Brenda Wise, Alvyn Wongso & Wen Leong, Mengshai Yuan, Sang-Hoon Yeo & Diane Hwang, Liyun & Shan He Zhang.
         </p>
 
+        <h2>Charities that support the festival</h2>
+        <p>
+          The William A Cadbury Trust, The M &amp; H Cadbury Trust, Baron Davenport's Charity, The Grimmitt Trust
+        </p>
+        <h2>Festival Committee</h2>
 
+        <h3>Chair</h3>
+        <p>
+          <strong>Ms Eloise Akehurst</strong><br /><a class="icon-envelope" name="email"></a><a
+            href="mailto:info@northfieldfestival.org.uk">Send Email</a
+          ><br /><a class="icon-phone-sign" name="phone"></a><strong>Phone:</strong> 0121 471 1583
+        </p>
+        <h3>Vice Chair</h3>
+        <p>
+          <strong>Mrs L Akehurst</strong><br /><a class="icon-envelope" name="email"></a><a
+            href="mailto:lucy.akehurst@gmail.com">Send Email</a
+          ><br /><a class="icon-phone-sign" name="phone"></a><strong>Phone:</strong> 0121 471 1583
+        </p>
+        <h3>Treasurer</h3>
+        <p>
+          <strong>Mrs Lin Le</strong><br /><a class="icon-envelope" name="email"></a><a
+            href="mailto:chrisslele@hotmail.com">Send Email</a
+          ><br /><strong><a class="icon-phone-sign" name="phone"></a>Phone:</strong> 0121 476 6182
+        </p>
+        <h3>Secretary</h3>
+        <p>
+          <strong>Mrs Justine Liu</strong><br /><a class="icon-envelope" name="email"></a><a
+            href="mailto:justineyyliu@gmail.com">Send Email</a
+          ><br /><a class="icon-phone-sign" name="phone"></a><strong>Phone:</strong> 01564 771 287
+        </p>
+        <h2>Members</h2>
+        <p>Mrs Miriam Banting</p>
+        <p>Mrs Pat Finney</p>
+        <p>Mrs Jas Sandhu</p>
+        <p>Mrs Ann Tran</p>
+        <h2>Committee Associates</h2>
+        <p>Mr Pat Akehurst</p>
+        <p>Mrs Caroline Wright</p>
+        
+        <h2>Contact Information</h2>
         <div class="gap-2xs flex items-center">
-          <Icon aria-hidden="true" name="lucide:phone" size={20} class="flex-shrink-0" />
+          <Icon aria-hidden="true" name="lucide:phone" size={20} class="shrink-0" />
           <p>
             <span class="font-bold">Phone:</span>
             <Link href="tel:01214711583">+44 121 471 1583</Link>
@@ -43,7 +117,7 @@ import { Icon } from 'astro-icon/components'
         </div>
 
         <div class="gap-2xs flex items-center">
-          <Icon aria-hidden="true" name="lucide:mail" size={20} class="flex-shrink-0" />
+          <Icon aria-hidden="true" name="lucide:mail" size={20} class="shrink-0" />
           <p>
             <span class="font-bold">Email:</span>
             <Link href="mailto:info@northfieldfestival.org.uk">info@northfieldfestival.org.uk</Link>
@@ -52,7 +126,14 @@ import { Icon } from 'astro-icon/components'
 
         <ul class="flex flex-wrap gap-2">
           <li>
-            <Link href="https://www.facebook.com/NorthfieldFest" isButton isExternal hideIcon animateOnHover animationType="boop">
+            <Link
+              href="https://www.facebook.com/NorthfieldFest"
+              isButton
+              isExternal
+              hideIcon
+              animateOnHover
+              animationType="boop"
+            >
               <Icon aria-hidden="true" name="lucide:facebook" size={32} />
               <span class="sr-only">Go to our Facebook page, opens in a new tab</span>
             </Link>
