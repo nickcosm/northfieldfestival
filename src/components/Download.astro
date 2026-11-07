@@ -1,0 +1,32 @@
+---
+import { Heading, Link } from 'accessible-astro-components'
+import { Icon } from 'astro-icon/components'
+
+/**
+ * CallToAction Component
+ *
+ * @description A prominent call-to-action section with a title and link
+ */
+interface Props {
+  /**
+   * The URL the button should link to
+   * @default "/forms/entry-form-2027.pdf"
+   */
+  link?: string
+  /**
+   * The text to display on the button
+   * @default "Download Entry Form 2027"
+   */
+  linkText?: string
+}
+
+const {
+  link = '/forms/entry-form-2027.pdf',
+  linkText = 'Download Entry Form 2027',
+} = Astro.props
+---
+
+<Link target="_blank" href={link} isButton size="lg" animateOnHover animationType="nudge">
+    {linkText}
+    <Icon aria-hidden="true" name="lucide:rocket" size="1.5rem" />
+</Link>
