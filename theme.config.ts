@@ -33,14 +33,23 @@ export default defineThemeConfig({
         href: '/about',
       },
       {
-        type: 'link',
-        label: 'Blog',
-        href: '/blog',
+        label: 'Applications',
+        type: 'dropdown',
+        items: [
+          {
+            label: 'Apply by Post',
+            href: '/apply-by-post',
+          },
+          {
+            label: 'Apply Online',
+            href: 'https://www.cognitoforms.com/NorthfieldFestivalOfMusicSpeech/OnlineApplicationNorthfieldFestival',
+          },
+        ],
       },
       {
         type: 'link',
-        label: 'Applications',
-        href: '/applications',
+        label: 'Blog',
+        href: '/blog',
       },
       {
         label: 'Policies & Rules',

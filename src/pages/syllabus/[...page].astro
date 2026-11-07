@@ -8,39 +8,39 @@ import type { CollectionEntry } from 'astro:content'
 import { slugify } from '@utils/slugify'
 
 // Import images directly for optimization
-import projectImage1 from '@assets/images/projects/project-image-1.png'
-import projectImage2 from '@assets/images/projects/project-image-2.png'
-import projectImage3 from '@assets/images/projects/project-image-3.png'
-import projectImage4 from '@assets/images/projects/project-image-4.png'
-import projectImage5 from '@assets/images/projects/project-image-5.png'
-import projectImage6 from '@assets/images/projects/project-image-6.png'
+import sectionImage1 from '@assets/images/sections/section-image-1.png'
+import sectionImage2 from '@assets/images/sections/section-image-2.png'
+import sectionImage3 from '@assets/images/sections/section-image-3.png'
+import sectionImage4 from '@assets/images/sections/section-image-4.png'
+import sectionImage5 from '@assets/images/sections/section-image-5.png'
+import sectionImage6 from '@assets/images/sections/section-image-6.png'
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const projects = await getCollection('projects')
-  const allTags = projects.map((project) => project.data.tags).flat()
+  const sections = await getCollection('sections')
+  const allTags = sections.map((section) => section.data.tags).flat()
   const uniqueTagLabels = [...new Set(allTags)].sort((a, b) => a.localeCompare(b))
   const uniqueTags = uniqueTagLabels.map((label) => ({
     label,
     slug: slugify(label),
   }))
 
-  const projectImages = [projectImage1, projectImage2, projectImage3, projectImage4, projectImage5, projectImage6]
+  const sectionImages = [sectionImage1, sectionImage2, sectionImage3, sectionImage4, sectionImage5, sectionImage6]
 
-  const projectsWithImages = projects.map((project, index) => {
+  const sectionsWithImages = sections.map((section, index) => {
     return {
-      ...project,
-      featuredImage: projectImages[index % projectImages.length],
+      ...section,
+      featuredImage: sectionImages[index % sectionImages.length],
     }
   })
 
-  return paginate(projectsWithImages, {
+  return paginate(sectionsWithImages, {
     pageSize: 6,
     props: { uniqueTags },
   })
 }) satisfies GetStaticPaths
 
 interface Props {
-  page: Page<CollectionEntry<'projects'> & { featuredImage: any }>
+  page: Page<CollectionEntry<'sections'> & { featuredImage: any }>
   uniqueTags: { label: string; slug: string }[]
 }
 
@@ -48,12 +48,12 @@ const { page, uniqueTags } = Astro.props
 ---
 
 <DefaultLayout
-  title="Portfolio"
-  description="A showcase of projects built with Astro Content Collections, demonstrating dynamic content management."
+  title="Syllabus"
+  description="A showcase of sections built with Astro Content Collections, demonstrating dynamic content management."
 >
   <PageHeader
-    title="Portfolio"
-    subtitle='A showcase of projects built with Astro Content Collections, demonstrating dynamic content management and organization. Learn more about <a href="https://docs.astro.build/en/guides/content-collections/">Astro Content Collections</a> in the official documentation.'
+    title="Syllabus"
+    subtitle='A showcase of sections built with Astro Content Collections, demonstrating dynamic content management and organization. Learn more about <a href="https://docs.astro.build/en/guides/content-collections/">Astro Content Collections</a> in the official documentation.'
     bgType="bordered"
   />
   <section class="my-12">
@@ -62,31 +62,31 @@ const { page, uniqueTags } = Astro.props
       <div class="flex flex-wrap gap-4">
         {
           uniqueTags.map((tag: { label: string; slug: string }) => (
-            <Link href={'/portfolio/tag/' + tag.slug}>{tag.label}</Link>
+            <Link href={'/syllabus/tag/' + tag.slug}>{tag.label}</Link>
           ))
         }
       </div>
       <p class="mt-8 text-sm">
-        <em>Project {page.start + 1} through {page.end + 1} of {page.total} total projects</em>
+        <em>Section {page.start + 1} through {page.end + 1} of {page.total} total sections</em>
       </p>
       <ul class="mt-3 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {
-          page.data.map((project) => (
+          page.data.map((section) => (
             <li>
               <Card
-                imageComponent={project.featuredImage}
-                url={'/portfolio/' + project.id}
-                title={project.data.title}
+                imageComponent={section.featuredImage}
+                url={'/syllabus/' + section.id}
+                title={section.data.title}
                 headingLevel="h2"
-                footer={'Author: ' + project.data.author}
+                footer={'Author: ' + section.data.author}
                 fullHeight={true}
               >
                 <span slot="meta">
-                  {project.data.tags.map((tag) => (
+                  {section.data.tags.map((tag) => (
                     <Badge>{tag}</Badge>
                   ))}
                 </span>
-                {project.data.description}
+                {section.data.description}
               </Card>
             </li>
           ))
@@ -96,13 +96,13 @@ const { page, uniqueTags } = Astro.props
         page && page.lastPage > 1 && (
           <div class="mt-12 grid place-content-center">
             <Pagination
-              firstPage={page.url.prev ? '/portfolio' : null}
+              firstPage={page.url.prev ? '/syllabus' : null}
               previousPage={page.url.prev ? page.url.prev : null}
               nextPage={page.url.next ? page.url.next : null}
-              lastPage={page.url.next ? `/portfolio/${page.lastPage}` : null}
+              lastPage={page.url.next ? `/syllabus/${page.lastPage}` : null}
               currentPage={`${page.currentPage}`}
               totalPages={`${page.lastPage}`}
-              ariaLabel="Portfolio pagination"
+              ariaLabel="Syllabus pagination"
             />
           </div>
         )

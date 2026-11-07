@@ -1,4 +1,4 @@
-import type { ProjectManifest, ResolvedOptions } from './types.js'
+import type { SectionManifest, ResolvedOptions } from './types.js'
 
 const ALWAYS_DELETE = [
   '.astro',
@@ -27,9 +27,9 @@ const DEMO_PAGE_GROUP = [
   'src/components/ColorContrast.astro',
 ]
 
-export function buildManifest(options: Pick<ResolvedOptions, 'preset' | 'includeLauncher'>): ProjectManifest {
+export function buildManifest(options: Pick<ResolvedOptions, 'preset' | 'includeLauncher'>): SectionManifest {
   const keepBlog = options.preset === 'full' || options.preset === 'blog'
-  const keepPortfolio = options.preset === 'full' || options.preset === 'portfolio'
+  const keepPortfolio = options.preset === 'full' || options.preset === 'syllabus'
   const keepDemoPages = options.preset === 'full'
   const keepAboutPage = options.preset === 'minimal'
   const keepContactPage = options.preset !== 'barebones'
@@ -47,7 +47,7 @@ export function buildManifest(options: Pick<ResolvedOptions, 'preset' | 'include
     }
   }
 
-  if (options.preset !== 'full' && options.preset !== 'blog' && options.preset !== 'portfolio') {
+  if (options.preset !== 'full' && options.preset !== 'blog' && options.preset !== 'syllabus') {
     pathsToDelete.add('public/astronaut-hero-img.webp')
     pathsToDelete.add('src/components/Hero.astro')
   }
@@ -71,13 +71,13 @@ export function buildManifest(options: Pick<ResolvedOptions, 'preset' | 'include
   }
 
   if (!keepPortfolio) {
-    pathsToDelete.add('public/projects')
-    pathsToDelete.add('src/assets/images/projects')
+    pathsToDelete.add('public/sections')
+    pathsToDelete.add('src/assets/images/sections')
     pathsToDelete.add('src/components/BlockQuote.astro')
-    pathsToDelete.add('src/components/FeaturedProjects.astro')
+    pathsToDelete.add('src/components/FeaturedSections.astro')
     pathsToDelete.add('src/content')
     pathsToDelete.add('src/content.config.ts')
-    pathsToDelete.add('src/pages/portfolio')
+    pathsToDelete.add('src/pages/syllabus')
   }
 
   if (!keepContactPage) {

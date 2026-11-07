@@ -1,10 +1,10 @@
 # Accessible Astro Starter
 
-A ready-to-use, SEO and accessibility-focused Astro starter template with blog and portfolio functionality.
+A ready-to-use, SEO and accessibility-focused Astro starter template with blog and syllabus functionality.
 
-## Project Overview
+## Section Overview
 
-- **Type**: Starter theme (static site / blog / portfolio)
+- **Type**: Starter theme (static site / blog / syllabus)
 - **Output Mode**: Static (SSG)
 - **Homepage**: https://accessible-astro-starter.incluud.dev/
 - **Repository**: https://github.com/incluud/accessible-astro-starter
@@ -22,12 +22,12 @@ Check `package.json` for current version and all dependencies.
 - ESLint with `eslint-plugin-jsx-a11y` - Accessibility linting
 - Prettier with Astro and Tailwind plugins - Code formatting
 
-## Project Purpose
+## Section Purpose
 
 This is the **flagship starter theme** of the Accessible Astro ecosystem:
 
-- **Target Audience**: Developers building blogs, portfolios, or content-focused websites
-- **Features**: Blog with pagination, project portfolio, contact forms, MDX support
+- **Target Audience**: Developers building blogs, syllabuss, or content-focused websites
+- **Features**: Blog with pagination, section syllabus, contact forms, MDX support
 - **Showcase**: Demonstrates all components from `accessible-astro-components`
 - **WCAG 2.2 AA**: Fully compliant with comprehensive accessibility features
 - **Reference Implementation**: Shows best practices for using the component library
@@ -65,7 +65,7 @@ This is the **flagship starter theme** of the Accessible Astro ecosystem:
 
 ### Workspace Development (Symlinked Components)
 
-This project can work with locally linked `accessible-astro-components`:
+This section can work with locally linked `accessible-astro-components`:
 
 - The `astro.config.mjs` automatically detects symlinked packages
 - When symlinks are detected, it enables:
@@ -95,7 +95,7 @@ npm link accessible-astro-components
   - `@pages` → `./src/pages`
   - `@public` → `./public`
   - `@post-images` → `./public/posts`
-  - `@project-images` → `./public/projects`
+  - `@section-images` → `./public/sections`
 
 ### Formatting
 
@@ -124,7 +124,7 @@ npm link accessible-astro-components
 
 ## Accessibility Requirements
 
-This project follows **WCAG 2.2 AA** standards and serves as a reference implementation.
+This section follows **WCAG 2.2 AA** standards and serves as a reference implementation.
 
 ### Essential Practices
 
@@ -151,7 +151,7 @@ This project follows **WCAG 2.2 AA** standards and serves as a reference impleme
 
 ```
 src/
-├── components/          # Custom project-specific components
+├── components/          # Custom section-specific components
 │   ├── Header.astro
 │   ├── Footer.astro
 │   ├── Navigation.astro
@@ -160,7 +160,7 @@ src/
 │   ├── Featured*.astro      # Content showcase components
 │   └── ... (explore for more)
 ├── content/             # MDX content collections
-│   └── projects/        # Project portfolio items
+│   └── sections/        # Section syllabus items
 ├── layouts/
 │   ├── DefaultLayout.astro    # Main layout
 │   └── MarkdownLayout.astro   # Layout for MDX content
@@ -175,7 +175,7 @@ src/
 │   ├── 404.astro        # Custom 404 page
 │   └── ... (explore for more pages)
 ├── assets/
-│   ├── images/          # Project images
+│   ├── images/          # Section images
 │   ├── img/             # SVG assets
 │   └── scss/            # SCSS utility classes
 ├── styles/
@@ -187,7 +187,7 @@ src/
 public/                  # Static assets (served as-is)
 ├── fonts/               # Atkinson Hyperlegible web fonts
 ├── posts/               # Blog post images
-├── projects/            # Project images
+├── sections/            # Section images
 └── favicon.svg
 ```
 
@@ -203,7 +203,7 @@ import { Accordion, AccordionItem, Button, Card, DarkMode, Modal } from 'accessi
 ---
 ```
 
-Many files throughout this project import from `accessible-astro-components`. Check the `/accessible-components` page to see all available components in action.
+Many files throughout this section import from `accessible-astro-components`. Check the `/accessible-components` page to see all available components in action.
 
 ### Creating Custom Components
 
@@ -225,9 +225,9 @@ The `/accessible-components` page (`src/pages/accessible-components.astro`) demo
 
 ## Content Collections
 
-The project uses Astro Content Collections for structured content:
+The section uses Astro Content Collections for structured content:
 
-- **Projects**: `src/content/projects/` (7 MDX files)
+- **Sections**: `src/content/sections/` (7 MDX files)
 - Schema defined in `src/content.config.ts`
 - Use frontmatter for metadata
 - Query with `getCollection()` API
@@ -242,14 +242,14 @@ Blog posts are in `src/pages/blog/` as Astro files:
 3. The `[...page].astro` file handles pagination automatically
 4. Add post images to `public/posts/`
 
-### Adding Projects
+### Adding Sections
 
-Projects are MDX content in `src/content/projects/`:
+Sections are MDX content in `src/content/sections/`:
 
-1. Create a new `.mdx` file in `src/content/projects/`
+1. Create a new `.mdx` file in `src/content/sections/`
 2. Add frontmatter following the schema in `content.config.ts`
 3. Write content in MDX format
-4. Add project images to `public/projects/`
+4. Add section images to `public/sections/`
 
 ## Key Pages and Features
 
@@ -257,7 +257,7 @@ Projects are MDX content in `src/content/projects/`:
 
 - Hero section with CTA
 - Featured posts
-- Featured projects
+- Featured sections
 - Component showcases
 
 ### Blog (`blog/[...page].astro` and `blog/[post].astro`)
@@ -386,7 +386,7 @@ type(scope): subject
 3. Clear cache and rebuild
 4. Check browser console for CSS errors
 
-## Related Projects
+## Related Sections
 
 This is part of the Accessible Astro ecosystem:
 
@@ -401,4 +401,4 @@ This is part of the Accessible Astro ecosystem:
 - [Tailwind CSS v4](https://tailwindcss.com/docs)
 - [ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
 - [MDX Documentation](https://mdxjs.com/)
-- [Project Roadmap](https://github.com/orgs/incluud/projects/4/views/1)
+- [Section Roadmap](https://github.com/orgs/incluud/sections/4/views/1)

@@ -1,4 +1,4 @@
-import type { ProjectManifest, ResolvedOptions } from './types.js'
+import type { SectionManifest, ResolvedOptions } from './types.js'
 import { escapeForHtml, escapeForSingleQuotedString, formatPresetLabel } from './utils.js'
 
 type ThemeNavItem =
@@ -24,7 +24,7 @@ function indent(value: string, spaces: number): string {
     .join('\n')
 }
 
-function buildThemeNavigation(manifest: ProjectManifest): ThemeNavItem[] {
+function buildThemeNavigation(manifest: SectionManifest): ThemeNavItem[] {
   if (manifest.preset === 'full') {
     return [
       {
@@ -37,7 +37,7 @@ function buildThemeNavigation(manifest: ProjectManifest): ThemeNavItem[] {
       },
       {
         label: 'Portfolio',
-        href: '/portfolio',
+        href: '/syllabus',
       },
       {
         type: 'dropdown',
@@ -101,7 +101,7 @@ function buildThemeNavigation(manifest: ProjectManifest): ThemeNavItem[] {
     ]
   }
 
-  if (manifest.preset === 'portfolio') {
+  if (manifest.preset === 'syllabus') {
     return [
       {
         label: 'Home',
@@ -109,7 +109,7 @@ function buildThemeNavigation(manifest: ProjectManifest): ThemeNavItem[] {
       },
       {
         label: 'Portfolio',
-        href: '/portfolio',
+        href: '/syllabus',
       },
       {
         label: 'Contact',
@@ -181,25 +181,25 @@ function createFeatureCards(cards: Array<{ title: string; body: string }>): stri
     .join('\n')
 }
 
-function createPresetDescription(siteName: string, manifest: ProjectManifest): string {
+function createPresetDescription(siteName: string, manifest: SectionManifest): string {
   const name = escapeForSingleQuotedString(siteName)
 
   switch (manifest.preset) {
     case 'blog':
       return `${name} is set up as an accessible content site with a blog and contact flow.`
-    case 'portfolio':
-      return `${name} is set up as an accessible portfolio with project pages and a contact flow.`
+    case 'syllabus':
+      return `${name} is set up as an accessible syllabus with section pages and a contact flow.`
     case 'minimal':
       return `${name} is a lightweight accessible content site with room to grow.`
     case 'barebones':
       return `${name} is a stripped-back accessible Astro foundation.`
     case 'full':
     default:
-      return `${name} is an accessible Astro site with blog, portfolio, and demo pages ready to customize.`
+      return `${name} is an accessible Astro site with blog, syllabus, and demo pages ready to customize.`
   }
 }
 
-export function createAstroConfig(manifest: ProjectManifest): string {
+export function createAstroConfig(manifest: SectionManifest): string {
   const imports = [
     "import { defineConfig, envField } from 'astro/config'",
     "import { fileURLToPath } from 'url'",
@@ -248,7 +248,7 @@ const viteConfig = {
       '@pages': fileURLToPath(new URL('./src/pages', import.meta.url)),
       '@public': fileURLToPath(new URL('./public', import.meta.url)),
       '@post-images': fileURLToPath(new URL('./public/posts', import.meta.url)),
-      '@project-images': fileURLToPath(new URL('./public/projects', import.meta.url)),
+      '@section-images': fileURLToPath(new URL('./public/sections', import.meta.url)),
       '@utils': fileURLToPath(new URL('./src/utils', import.meta.url)),
       '@theme-config': fileURLToPath(new URL('./theme.config.ts', import.meta.url)),
     },
@@ -265,7 +265,7 @@ ${envBlock}
 `
 }
 
-export function createThemeConfig(options: ResolvedOptions, manifest: ProjectManifest): string {
+export function createThemeConfig(options: ResolvedOptions, manifest: SectionManifest): string {
   const navigationItems = buildThemeNavigation(manifest).map(renderThemeNavigationItem).join(',\n')
   const siteName = escapeForSingleQuotedString(options.siteName)
   const description = escapeForSingleQuotedString(createPresetDescription(options.siteName, manifest))
@@ -863,8 +863,8 @@ export function createHero(options: Pick<ResolvedOptions, 'preset' | 'siteName'>
   const description =
     options.preset === 'blog'
       ? 'A clean, accessible blog starter with a contact flow and room to shape your editorial voice.'
-      : options.preset === 'portfolio'
-        ? 'Showcase your work with accessible project pages, content collections, and a simple contact flow.'
+      : options.preset === 'syllabus'
+        ? 'Showcase your work with accessible section pages, content collections, and a simple contact flow.'
       : 'A flexible starting point for publishing content, sharing work, and building accessibly with Astro.'
   const notification =
     options.preset === 'blog'
@@ -872,17 +872,17 @@ export function createHero(options: Pick<ResolvedOptions, 'preset' | 'siteName'>
         <Notification type="info" variant="accent">
           <p>Update the blog routes, data source, and homepage copy to match how you want to publish content.</p>
         </Notification>`
-      : options.preset === 'portfolio'
+      : options.preset === 'syllabus'
         ? `
         <Notification type="info" variant="accent">
-          <p>Swap the placeholder project content for your own case studies and update the tags to match your work.</p>
+          <p>Swap the placeholder section content for your own case studies and update the tags to match your work.</p>
         </Notification>`
       : ''
   const actions =
     options.preset === 'blog'
       ? `<Link href="/blog" isButton type="primary" animateOnHover animationType="boop">Browse posts</Link>`
-      : options.preset === 'portfolio'
-        ? `<Link href="/portfolio" isButton type="primary" animateOnHover animationType="boop">View projects</Link>`
+      : options.preset === 'syllabus'
+        ? `<Link href="/syllabus" isButton type="primary" animateOnHover animationType="boop">View sections</Link>`
       : `<Link
             href="https://github.com/incluud/accessible-astro-starter"
             isButton
@@ -961,7 +961,7 @@ ${notification}
 `
 }
 
-export function createFooter(manifest: Pick<ProjectManifest, 'preset'>): string {
+export function createFooter(manifest: Pick<SectionManifest, 'preset'>): string {
   if (manifest.preset === 'barebones') {
     return `---
 import { Link } from 'accessible-astro-components'
@@ -1020,7 +1020,7 @@ const socialLinks = themeConfig.socials ?? []
         <Heading level="h2" size="h4">{themeConfig.name}</Heading>
         <p>
           Replace this footer with your own links, business details, and supporting copy once you start customizing the
-          project.
+          section.
         </p>
       </div>
       {
@@ -1077,9 +1077,9 @@ const socialLinks = themeConfig.socials ?? []
 `
 }
 
-export function createLauncherConfig(manifest: ProjectManifest): string {
+export function createLauncherConfig(manifest: SectionManifest): string {
   const blogImports = manifest.keepBlog ? ["import { BLOG_API_URL } from 'astro:env/server'", "import { slugify } from '@utils/slugify'"] : []
-  const portfolioImports = manifest.keepPortfolio ? ["import { getCollection } from 'astro:content'"] : []
+  const syllabusImports = manifest.keepPortfolio ? ["import { getCollection } from 'astro:content'"] : []
 
   const blogItems = manifest.keepBlog
     ? `const maxLauncherBlogPosts = 30
@@ -1112,13 +1112,13 @@ const launcherBlogItems = await (async () => {
 })()`
     : "const launcherBlogItems: Array<{ label: string; href: string }> = []"
 
-  const projectItems = manifest.keepPortfolio
-    ? `const launcherProjectItems = (await getCollection('projects')).map((project) => ({
-  label: project.data.title,
-  href: \`/portfolio/\${project.id}\`,
-  keywords: [project.data.author, ...project.data.tags],
+  const sectionItems = manifest.keepPortfolio
+    ? `const launcherSectionItems = (await getCollection('sections')).map((section) => ({
+  label: section.data.title,
+  href: \`/syllabus/\${section.id}\`,
+  keywords: [section.data.author, ...section.data.tags],
 }))`
-    : "const launcherProjectItems: Array<{ label: string; href: string; keywords?: string[] }> = []"
+    : "const launcherSectionItems: Array<{ label: string; href: string; keywords?: string[] }> = []"
 
   return `---
 import {
@@ -1129,7 +1129,7 @@ import {
   LauncherLink,
 } from 'accessible-astro-launcher'
 import { Icon } from 'astro-icon/components'
-${portfolioImports.join('\n')}
+${syllabusImports.join('\n')}
 ${blogImports.join('\n')}
 import themeConfig from '@theme-config'
 
@@ -1150,7 +1150,7 @@ const launcherPreferenceItems = [
 
 ${blogItems}
 
-${projectItems}
+${sectionItems}
 
 const launcherNavigationItems = themeConfig.navigation.items.flatMap((item) => {
   if (item.type === 'dropdown') {
@@ -1213,9 +1213,9 @@ const launcherSocialItems = (themeConfig.socials ?? []).map((item) => ({
     )
   }
   {
-    launcherProjectItems.length > 0 && (
-      <LauncherNav label="Projects">
-        {launcherProjectItems.map((item) => (
+    launcherSectionItems.length > 0 && (
+      <LauncherNav label="Sections">
+        {launcherSectionItems.map((item) => (
           <LauncherLink label={item.label} href={item.href} keywords={item.keywords}>
             <Icon slot="icon" aria-hidden="true" name="lucide:bookmark" size="16" />
           </LauncherLink>
@@ -1248,7 +1248,7 @@ import DefaultLayout from '@layouts/DefaultLayout.astro'
 import Hero from '@components/Hero.astro'
 import Feature from '@components/Feature.astro'
 import FeaturedPosts from '@components/FeaturedPosts.astro'
-import FeaturedProjects from '@components/FeaturedProjects.astro'
+import FeaturedSections from '@components/FeaturedSections.astro'
 ---
 
 <DefaultLayout title="${escapeForHtml(siteName)}" useTitleTemplate={false}>
@@ -1260,7 +1260,7 @@ import FeaturedProjects from '@components/FeaturedProjects.astro'
         Edit theme.config.ts, replace placeholder copy, and shape the starter around your content model.
       </Feature>
       <Feature icon="lucide:scissors" title="Keep what you need" level="h2">
-        This preset includes the blog, portfolio, contact flow, and reference pages so you can trim from a rich base.
+        This preset includes the blog, syllabus, contact flow, and reference pages so you can trim from a rich base.
       </Feature>
       <Feature icon="lucide:accessibility" title="Build accessibly" level="h2">
         Navigation, color tokens, logical properties, and readable typography are ready from the start.
@@ -1269,7 +1269,7 @@ import FeaturedProjects from '@components/FeaturedProjects.astro'
   </section>
 
   <FeaturedPosts />
-  <FeaturedProjects />
+  <FeaturedSections />
 </DefaultLayout>
 `
 }
@@ -1293,13 +1293,13 @@ function createPortfolioIndex(siteName: string): string {
   return `---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import Hero from '@components/Hero.astro'
-import FeaturedProjects from '@components/FeaturedProjects.astro'
+import FeaturedSections from '@components/FeaturedSections.astro'
 ---
 
 <DefaultLayout title="${escapeForHtml(siteName)}" useTitleTemplate={false}>
   <Hero />
 
-  <FeaturedProjects />
+  <FeaturedSections />
 </DefaultLayout>
 `
 }
@@ -1362,7 +1362,7 @@ import { Heading, Notification } from 'accessible-astro-components'
         This is a barebones accessible Astro foundation with the core layout, navigation, footer, and styles intact.
       </p>
       <Notification type="info">
-        <p>Start by editing this page, theme.config.ts, and the navigation to match your project.</p>
+        <p>Start by editing this page, theme.config.ts, and the navigation to match your section.</p>
       </Notification>
     </div>
   </section>
@@ -1374,7 +1374,7 @@ export function createIndexPage(options: ResolvedOptions): string {
   switch (options.preset) {
     case 'blog':
       return createBlogIndex(options.siteName)
-    case 'portfolio':
+    case 'syllabus':
       return createPortfolioIndex(options.siteName)
     case 'minimal':
       return createMinimalIndex(options.siteName)
@@ -1404,7 +1404,7 @@ import { Heading } from 'accessible-astro-components'
       <Heading level="h2">Tell your story</Heading>
       <p>
         Share what you do, who you help, and what makes your work distinctive. This starter keeps the structure simple
-        so you can adapt it to a portfolio, studio site, personal site, or small business presence.
+        so you can adapt it to a syllabus, studio site, personal site, or small business presence.
       </p>
       <p>
         You can expand this page with testimonials, process notes, service descriptions, or a short timeline once the
@@ -1497,7 +1497,7 @@ export function createReadme(options: ResolvedOptions): string {
   return [
     `# ${options.siteName}`,
     '',
-    'This project was generated with `npm create accessible-astro-starter@latest`.',
+    'This section was generated with `npm create accessible-astro-starter@latest`.',
     '',
     '## Included setup',
     '',

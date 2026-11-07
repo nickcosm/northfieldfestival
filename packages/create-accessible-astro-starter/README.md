@@ -1,6 +1,6 @@
 # create-accessible-astro-starter
 
-Create a new Accessible Astro Starter project with guided presets and optional launcher support.
+Create a new Accessible Astro Starter section with guided presets and optional launcher support.
 
 ## Usage
 
@@ -28,4 +28,4 @@ From the starter repo root, run:
 npm run create:local -- my-demo-site
 ```
 
-The first positional argument sets the output directory. The later site name prompt only changes generated project metadata.
+The first positional argument sets the output directory. The later site name prompt only changes generated section metadata.

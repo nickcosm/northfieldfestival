@@ -1,0 +1,61 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import { Heading } from 'accessible-astro-components'
+import { getCollection, render } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
+
+export async function getStaticPaths() {
+  const sections = await getCollection('sections')
+
+  const sectionImages = [
+    { src: '/sections/any-instrument.webp' },
+    { src: '/sections/instrument-ensemble.webp' },
+    { src: '/sections/piano.webp' },
+    { src: '/sections/speech.webp' },
+    { src: '/sections/strings.webp' },
+    { src: '/sections/vocals.webp' },
+  ]
+
+  return sections.map((section, index) => {
+    const sectionWithImage = {
+      ...section,
+      featuredImage: sectionImages[index % sectionImages.length].src,
+    }
+
+    return {
+      params: { section: section.id },
+      props: { section: sectionWithImage },
+    }
+  })
+}
+
+interface Props {
+  section: CollectionEntry<'sections'> & { featuredImage: string }
+}
+
+const { section } = Astro.props
+const { Content } = await render(section)
+
+---
+
+<DefaultLayout title={section.data.title} description={section.data.description} url={`/syllabus/${section.id}`}>
+  <PageHeader
+    title={section.data.title}
+    subtitle={section.data.description}
+    bgType="bordered"
+    featuredImage={section.featuredImage}
+  />
+  <section class="my-12">
+    <div class="space-content container">
+      <Content />
+    </div>
+  </section>
+</DefaultLayout>
+
+<style lang="scss" is:global>
+  .narrow {
+    margin-inline: auto;
+    max-width: 65ch;
+  }
+</style>

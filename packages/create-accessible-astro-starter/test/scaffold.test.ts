@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { buildManifest } from '../src/presets.js'
-import { scaffoldProject } from '../src/scaffold.js'
+import { scaffoldSection } from '../src/scaffold.js'
 import { PRESETS, type Preset, type ResolvedOptions } from '../src/types.js'
 import { slugifySiteName } from '../src/utils.js'
 
@@ -28,7 +28,7 @@ test('full preset keeps the starter header, navigation, logo, and hero structure
   const manifest = buildManifest(options)
 
   process.env.ACCESSIBLE_ASTRO_STARTER_TEMPLATE_DIR = repoRoot
-  await scaffoldProject(options, manifest)
+  await scaffoldSection(options, manifest)
 
   const generatedHeader = await readFile(resolve(targetDir, 'src/components/Header.astro'), 'utf8')
   const generatedNavigation = await readFile(resolve(targetDir, 'src/components/Navigation.astro'), 'utf8')
@@ -81,7 +81,7 @@ test('blog preset keeps styled navigation, logo asset, and uses a generated hero
   const manifest = buildManifest(options)
 
   process.env.ACCESSIBLE_ASTRO_STARTER_TEMPLATE_DIR = repoRoot
-  await scaffoldProject(options, manifest)
+  await scaffoldSection(options, manifest)
 
   const generatedHeader = await readFile(resolve(targetDir, 'src/components/Header.astro'), 'utf8')
   const generatedNavigation = await readFile(resolve(targetDir, 'src/components/Navigation.astro'), 'utf8')
@@ -123,14 +123,14 @@ test('blog preset keeps styled navigation, logo asset, and uses a generated hero
   await expectExists(targetDir, 'public/astronaut-hero-img.webp')
 })
 
-test('portfolio preset uses a generated hero', async () => {
+test('syllabus preset uses a generated hero', async () => {
   const tempRoot = await mkdtemp(join(tmpdir(), 'accessible-astro-starter-'))
-  const targetDir = join(tempRoot, 'portfolio-launcher-hero')
-  const options = createOptions('portfolio', true, targetDir)
+  const targetDir = join(tempRoot, 'syllabus-launcher-hero')
+  const options = createOptions('syllabus', true, targetDir)
   const manifest = buildManifest(options)
 
   process.env.ACCESSIBLE_ASTRO_STARTER_TEMPLATE_DIR = repoRoot
-  await scaffoldProject(options, manifest)
+  await scaffoldSection(options, manifest)
 
   const generatedHero = await readFile(resolve(targetDir, 'src/components/Hero.astro'), 'utf8')
   const generatedIndex = await readFile(resolve(targetDir, 'src/pages/index.astro'), 'utf8')
@@ -139,12 +139,12 @@ test('portfolio preset uses a generated hero', async () => {
   assert.ok(generatedIndex.includes('<Hero />'))
   assert.ok(
     generatedHero.includes(
-      '<h1 class="text-center text-6xl md:text-left lg:text-8xl"><span class="text-gradient">Fixture</span> portfolio</h1>',
+      '<h1 class="text-center text-6xl md:text-left lg:text-8xl"><span class="text-gradient">Fixture</span> syllabus</h1>',
     ),
   )
-  assert.ok(generatedHero.includes('Swap the placeholder project content for your own case studies and update the tags to match your work.'))
-  assert.ok(generatedHero.indexOf('Swap the placeholder project content') < generatedHero.indexOf('Showcase your work with accessible project pages'))
-  assert.ok(generatedHero.includes('View projects'))
+  assert.ok(generatedHero.includes('Swap the placeholder section content for your own case studies and update the tags to match your work.'))
+  assert.ok(generatedHero.indexOf('Swap the placeholder section content') < generatedHero.indexOf('Showcase your work with accessible section pages'))
+  assert.ok(generatedHero.includes('View sections'))
   assert.ok(!generatedHero.includes('Portfolio preset'))
   assert.ok(!generatedHero.includes('eyebrow'))
   assert.ok(!generatedHero.includes('href="/contact"'))
@@ -158,7 +158,7 @@ test('minimal preset renders clean homepage cards and actions', async () => {
   const manifest = buildManifest(options)
 
   process.env.ACCESSIBLE_ASTRO_STARTER_TEMPLATE_DIR = repoRoot
-  await scaffoldProject(options, manifest)
+  await scaffoldSection(options, manifest)
 
   const generatedIndex = await readFile(resolve(targetDir, 'src/pages/index.astro'), 'utf8')
 
@@ -178,7 +178,7 @@ test('barebones preset renders notification and slim footer', async () => {
   const manifest = buildManifest(options)
 
   process.env.ACCESSIBLE_ASTRO_STARTER_TEMPLATE_DIR = repoRoot
-  await scaffoldProject(options, manifest)
+  await scaffoldSection(options, manifest)
 
   const generatedIndex = await readFile(resolve(targetDir, 'src/pages/index.astro'), 'utf8')
   const generatedFooter = await readFile(resolve(targetDir, 'src/components/Footer.astro'), 'utf8')
@@ -186,7 +186,7 @@ test('barebones preset renders notification and slim footer', async () => {
   assert.ok(generatedIndex.includes("import { Heading, Notification } from 'accessible-astro-components'"))
   assert.ok(generatedIndex.includes('<Notification type="info">'))
   assert.ok(!generatedIndex.includes('variant="accent"'))
-  assert.ok(generatedIndex.includes('Start by editing this page, theme.config.ts, and the navigation to match your project.'))
+  assert.ok(generatedIndex.includes('Start by editing this page, theme.config.ts, and the navigation to match your section.'))
   assert.ok(generatedFooter.includes('&copy; {currentYear} - Starter Theme for <Link href="https://astro.build/">Astro</Link>.'))
   assert.ok(generatedFooter.includes('Made with ❤️ by <Link href="https://github.com/markteekman">Mark Teekman</Link>'))
   assert.ok(!generatedFooter.includes('footerLinks'))
@@ -202,7 +202,7 @@ test('generated markup escapes site names in HTML text and attributes', async ()
   const manifest = buildManifest(options)
 
   process.env.ACCESSIBLE_ASTRO_STARTER_TEMPLATE_DIR = repoRoot
-  await scaffoldProject(options, manifest)
+  await scaffoldSection(options, manifest)
 
   const generatedIndex = await readFile(resolve(targetDir, 'src/pages/index.astro'), 'utf8')
   const generatedAbout = await readFile(resolve(targetDir, 'src/pages/about.astro'), 'utf8')
@@ -220,7 +220,7 @@ test('generated hero escapes site names in HTML text', async () => {
   const manifest = buildManifest(options)
 
   process.env.ACCESSIBLE_ASTRO_STARTER_TEMPLATE_DIR = repoRoot
-  await scaffoldProject(options, manifest)
+  await scaffoldSection(options, manifest)
 
   const generatedHero = await readFile(resolve(targetDir, 'src/components/Hero.astro'), 'utf8')
 
@@ -235,7 +235,7 @@ test('generated navigation compares active paths without substring matches', asy
   const manifest = buildManifest(options)
 
   process.env.ACCESSIBLE_ASTRO_STARTER_TEMPLATE_DIR = repoRoot
-  await scaffoldProject(options, manifest)
+  await scaffoldSection(options, manifest)
 
   const generatedNavigation = await readFile(resolve(targetDir, 'src/components/Navigation.astro'), 'utf8')
 
@@ -263,7 +263,7 @@ for (const preset of PRESETS) {
       const manifest = buildManifest(options)
 
       process.env.ACCESSIBLE_ASTRO_STARTER_TEMPLATE_DIR = repoRoot
-      await scaffoldProject(options, manifest)
+      await scaffoldSection(options, manifest)
 
       const packageJson = JSON.parse(await readFile(resolve(targetDir, 'package.json'), 'utf8')) as {
         name: string
@@ -298,10 +298,10 @@ for (const preset of PRESETS) {
       }
 
       if (manifest.keepPortfolio) {
-        await expectExists(targetDir, 'src/pages/portfolio/[...page].astro')
+        await expectExists(targetDir, 'src/pages/syllabus/[...page].astro')
         await expectExists(targetDir, 'src/content.config.ts')
       } else {
-        await expectMissing(targetDir, 'src/pages/portfolio/[...page].astro')
+        await expectMissing(targetDir, 'src/pages/syllabus/[...page].astro')
         await expectMissing(targetDir, 'src/content.config.ts')
       }
 

@@ -74,11 +74,11 @@ const components = [
   { name: 'Video', id: 'video' },
 ]
 
-const tableProjects = [
+const tableSections = [
   { name: 'Acme Starter', users: 1280, updated: '2026-02-10' },
   { name: 'Beacon Dashboard', users: 642, updated: '2026-01-22' },
   { name: 'Citrine Docs', users: 2890, updated: '2026-02-17' },
-  { name: 'A project with a longer descriptive name', users: 35, updated: '2026-03-01' },
+  { name: 'A section with a longer descriptive name', users: 35, updated: '2026-03-01' },
 ]
 ---
 
@@ -368,29 +368,29 @@ const tableProjects = [
         </DarkMode>
 
         <Heading level="h2" id="data-table">DataTable</Heading>
-        <p>Search all projects, sort columns, and navigate pages. Long names wrap while column widths remain stable.</p>
-        <DataTable caption="Projects" pageSize={3} style="--data-table-min-width: 32rem">
-          <DataTableSearch slot="search" label="Search projects" />
-          <DataTableInfo slot="info" start={1} end={tableProjects.length} total={tableProjects.length} />
+        <p>Search all sections, sort columns, and navigate pages. Long names wrap while column widths remain stable.</p>
+        <DataTable caption="Sections" pageSize={3} style="--data-table-min-width: 32rem">
+          <DataTableSearch slot="search" label="Search sections" />
+          <DataTableInfo slot="info" start={1} end={tableSections.length} total={tableSections.length} />
           <DataTableHeader>
-            <DataTableColumn sortable width="50%">Project</DataTableColumn>
+            <DataTableColumn sortable width="50%">Section</DataTableColumn>
             <DataTableColumn sortable numeric width="20%">Users</DataTableColumn>
             <DataTableColumn sortable width="30%">Updated</DataTableColumn>
           </DataTableHeader>
           <DataTableBody>
             {
-              tableProjects.map((project) => (
+              tableSections.map((section) => (
                 <DataTableRow>
-                  <DataTableCell as="th">{project.name}</DataTableCell>
-                  <DataTableCell numeric sortValue={project.users}>
-                    {project.users.toLocaleString('en-US')}
+                  <DataTableCell as="th">{section.name}</DataTableCell>
+                  <DataTableCell numeric sortValue={section.users}>
+                    {section.users.toLocaleString('en-US')}
                   </DataTableCell>
-                  <DataTableCell sortValue={project.updated}>{project.updated}</DataTableCell>
+                  <DataTableCell sortValue={section.updated}>{section.updated}</DataTableCell>
                 </DataTableRow>
               ))
             }
           </DataTableBody>
-          <DataTablePagination slot="footer" client ariaLabel="Projects pagination" />
+          <DataTablePagination slot="footer" client ariaLabel="Sections pagination" />
         </DataTable>
         <p><a href="https://accessible-astro.incluud.dev/components/data-table/">DataTable documentation</a></p>
 
@@ -400,8 +400,8 @@ const tableProjects = [
           from any edge of the viewport.
         </p>
         <Heading level="h3">Default with footer</Heading>
-        <Button id="drawer-default-trigger" aria-haspopup="dialog">Open project drawer</Button>
-        <Drawer triggerId="drawer-default-trigger" title="Project details" showFooter>
+        <Button id="drawer-default-trigger" aria-haspopup="dialog">Open section drawer</Button>
+        <Drawer triggerId="drawer-default-trigger" title="Section details" showFooter>
           <p>
             Use a drawer for supporting information or short tasks that should remain connected to the current page.
           </p>

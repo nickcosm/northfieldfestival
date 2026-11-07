@@ -30,7 +30,7 @@ import {
   createThankYouPage,
   createThemeConfig,
 } from './templates.js'
-import type { ProjectManifest, ResolvedOptions } from './types.js'
+import type { SectionManifest, ResolvedOptions } from './types.js'
 
 type PackageJson = {
   name: string
@@ -67,7 +67,7 @@ async function materializeTemplate(targetDir: string): Promise<void> {
   })
 }
 
-async function rewritePackageJson(targetDir: string, options: ResolvedOptions, manifest: ProjectManifest): Promise<void> {
+async function rewritePackageJson(targetDir: string, options: ResolvedOptions, manifest: SectionManifest): Promise<void> {
   const packageJsonPath = resolve(targetDir, 'package.json')
   const packageJson = await readJson<PackageJson>(packageJsonPath)
 
@@ -98,7 +98,7 @@ async function rewritePackageJson(targetDir: string, options: ResolvedOptions, m
   await writeJson(packageJsonPath, packageJson)
 }
 
-async function writeProjectFiles(targetDir: string, options: ResolvedOptions, manifest: ProjectManifest): Promise<void> {
+async function writeSectionFiles(targetDir: string, options: ResolvedOptions, manifest: SectionManifest): Promise<void> {
   const keepOriginalFullChrome = manifest.preset === 'full' && manifest.includeLauncher
 
   await writeText(resolve(targetDir, 'README.md'), createReadme(options))
@@ -112,7 +112,7 @@ async function writeProjectFiles(targetDir: string, options: ResolvedOptions, ma
   await writeText(resolve(targetDir, 'src/components/NavigationItems.astro'), createNavigationItems(manifest.includeLauncher))
   await writeText(resolve(targetDir, 'src/pages/index.astro'), createIndexPage(options))
 
-  if (manifest.preset === 'full' || manifest.preset === 'blog' || manifest.preset === 'portfolio') {
+  if (manifest.preset === 'full' || manifest.preset === 'blog' || manifest.preset === 'syllabus') {
     await writeText(resolve(targetDir, 'src/components/Hero.astro'), createHero(options))
   }
 
@@ -135,28 +135,28 @@ async function writeProjectFiles(targetDir: string, options: ResolvedOptions, ma
   }
 }
 
-async function cleanupEmptyProjectDirectories(targetDir: string): Promise<void> {
+async function cleanupEmptySectionDirectories(targetDir: string): Promise<void> {
   await Promise.all(
     [
       'scripts',
       'src/assets/images',
       'src/content',
       'src/pages/blog',
-      'src/pages/portfolio',
-      'src/pages/portfolio/tag',
+      'src/pages/syllabus',
+      'src/pages/syllabus/tag',
       'public/posts',
-      'public/projects',
+      'public/sections',
       'packages',
     ].map((relativePath) => removeEmptyDirectories(resolve(targetDir, relativePath))),
   )
 }
 
-export async function scaffoldProject(options: ResolvedOptions, manifest = buildManifest(options)): Promise<void> {
+export async function scaffoldSection(options: ResolvedOptions, manifest = buildManifest(options)): Promise<void> {
   await ensureDirectoryIsReady(options.targetDir)
   await materializeTemplate(options.targetDir)
   await removeNamedFiles(options.targetDir, '.DS_Store')
   await removePaths(options.targetDir, manifest.pathsToDelete)
-  await writeProjectFiles(options.targetDir, options, manifest)
+  await writeSectionFiles(options.targetDir, options, manifest)
   await rewritePackageJson(options.targetDir, options, manifest)
-  await cleanupEmptyProjectDirectories(options.targetDir)
+  await cleanupEmptySectionDirectories(options.targetDir)
 }

@@ -5,7 +5,7 @@ import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { spawn } from 'node:child_process'
 import { buildManifest } from '../src/presets.js'
-import { scaffoldProject } from '../src/scaffold.js'
+import { scaffoldSection } from '../src/scaffold.js'
 import { PRESETS, type Preset, type ResolvedOptions } from '../src/types.js'
 import { slugifySiteName } from '../src/utils.js'
 
@@ -55,7 +55,7 @@ async function main(): Promise<void> {
       const options = createOptions(preset, includeLauncher, targetDir)
       const manifest = buildManifest(options)
 
-      await scaffoldProject(options, manifest)
+      await scaffoldSection(options, manifest)
       await runCommand(npmCommand, ['install'], targetDir)
       await runCommand(npmCommand, ['run', 'build'], targetDir)
 

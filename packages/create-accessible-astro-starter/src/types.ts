@@ -1,4 +1,4 @@
-export const PRESETS = ['full', 'blog', 'portfolio', 'minimal', 'barebones'] as const
+export const PRESETS = ['full', 'blog', 'syllabus', 'minimal', 'barebones'] as const
 
 export type Preset = (typeof PRESETS)[number]
 
@@ -18,7 +18,7 @@ export type ResolvedOptions = {
   includeLauncher: boolean
 }
 
-export type ProjectManifest = {
+export type SectionManifest = {
   preset: Preset
   includeLauncher: boolean
   keepBlog: boolean

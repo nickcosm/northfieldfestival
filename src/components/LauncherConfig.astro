@@ -81,14 +81,14 @@ const launcherBlogItems = await (async () => {
 })()
 
 /**
- * Project items for the launcher, sourced from the 'projects' collection.
+ * Section items for the launcher, sourced from the 'sections' collection.
  *
  * @type {Array<{ label: string, href: string, keywords: Array<string> }>}
  */
-const launcherProjectItems = (await getCollection('projects')).map((project) => ({
-  label: project.data.title,
-  href: `/portfolio/${project.id}`,
-  keywords: [project.data.author, ...project.data.tags],
+const launcherSectionItems = (await getCollection('sections')).map((section) => ({
+  label: section.data.title,
+  href: `/syllabus/${section.id}`,
+  keywords: [section.data.author, ...section.data.tags],
 }))
 
 /**
@@ -135,7 +135,7 @@ const launcherSocialItems = (themeConfig.socials ?? []).map((item) => ({
   external: item.external ?? false,
 }))
 
-const launcherAccessibleAstroProjects = [
+const launcherAccessibleAstroSections = [
   {
     label: 'Accessible Astro Starter',
     href: 'https://github.com/incluud/accessible-astro-starter',
@@ -194,9 +194,9 @@ const launcherAccessibleAstroProjects = [
     )
   }
   {
-    launcherProjectItems.length > 0 && (
-      <LauncherNav label="Projects">
-        {launcherProjectItems.map((item) => (
+    launcherSectionItems.length > 0 && (
+      <LauncherNav label="Sections">
+        {launcherSectionItems.map((item) => (
           <LauncherLink label={item.label} href={item.href} keywords={item.keywords}>
             <Icon slot="icon" aria-hidden="true" name="lucide:bookmark" size="16" />
           </LauncherLink>
@@ -205,9 +205,9 @@ const launcherAccessibleAstroProjects = [
     )
   }
   {
-    launcherAccessibleAstroProjects.length > 0 && (
-      <LauncherNav label="Accessible Astro Projects">
-        {launcherAccessibleAstroProjects.map((item) => (
+    launcherAccessibleAstroSections.length > 0 && (
+      <LauncherNav label="Accessible Astro Sections">
+        {launcherAccessibleAstroSections.map((item) => (
           <LauncherLink label={item.label} href={item.href}>
             <Icon slot="icon" aria-hidden="true" name="lucide:external-link" size="16" />
           </LauncherLink>

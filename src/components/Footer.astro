@@ -2,6 +2,7 @@
 import CallToAction from './CallToAction.astro'
 import Logo from './Logo.astro'
 import { Heading, Link } from 'accessible-astro-components'
+import { Icon } from 'astro-icon/components'
 
 /**
  * Footer Component
@@ -19,59 +20,44 @@ const currentYear = new Date().getFullYear()
       <div class="flex flex-col gap-4">
         <Heading level="h3" size="h6">Features</Heading>
         <ul class="flex flex-col gap-2">
-          <li><Link href="/accessibility-statement">Accessibility statement</Link></li>
-          <li><Link href="/accessible-components">Accessible components</Link></li>
-          <li><Link href="/color-contrast-checker">Color contrast checker</Link></li>
-          <li><Link href="/markdown-page">Markdown page</Link></li>
-          <li><Link href="/mdx-page">MDX page</Link></li>
-          <li><Link href="/404-page">404 page</Link></li>
+          <li><Link href="/about">About the Festival</Link></li>
+          <li><Link href="/blog">Blog</Link></li>
+          <li><Link href="/syllabus">Apply by Post</Link></li>
+          <li><Link isExternalhref="https://www.cognitoforms.com/NorthfieldFestivalOfMusicSpeech/OnlineApplicationNorthfieldFestival">Apply Online</Link></li>
           <li><Link href="/sitemap">Sitemap</Link></li>
         </ul>
       </div>
       <div class="flex flex-col gap-4">
-        <Heading level="h3" size="h6">Incluud projects</Heading>
+        <Heading level="h3" size="h6">Policies & Rules</Heading>
         <ul class="flex flex-col gap-2">
           <li>
-            <Link isExternal href="https://accessible-astro-starter.incluud.dev">Accessible Astro Starter</Link>
+            <Link href="/privacy-policy">Privacy Policy</Link>
           </li>
           <li>
-            <Link isExternal href="https://accessible-astro-dashboard.incluud.dev">Accessible Astro Dashboard</Link>
+            <Link href="/child-protection-policy">Child Protection Policy</Link>
           </li>
           <li>
-            <Link isExternal href="https://accessible-astro-starter.incluud.dev/accessible-components"
-              >Accessible Astro Components</Link
-            >
-          </li>
-          <li>
-            <Link isExternal href="https://accessible-astro-docs.incluud.dev">Accessible Astro Docs</Link>
-          </li>
-          <li>
-            <Link isExternal href="https://color-contrast.incluud.dev">Color Contrast Checker</Link>
-          </li>
+            <Link href="/festival-rules">Festival Rules</Link>
+          </li>         
         </ul>
       </div>
       <div class="flex flex-col gap-4">
-        <Heading level="h3" size="h6">Developer tools</Heading>
-        <ul class="flex flex-col gap-2">
-          <li>
-            <Link isExternal href="https://chrispederick.com/work/web-developer/">Web Developer Extension</Link>
-          </li>
-          <li>
-            <Link isExternal href="https://accessibilityinsights.io/">Accessibility Insights</Link>
-          </li>
-          <li>
-            <Link isExternal href="https://www.deque.com/axe/devtools/">axe DevTools</Link>
-          </li>
-          <li>
-            <Link isExternal href="https://wave.webaim.org/extension/">WAVE Web Accessibility</Link>
-          </li>
-          <li>
-            <Link isExternal href="https://www.w3.org/WAI/ARIA/apg/patterns/">ARIA Design Patterns</Link>
-          </li>
-          <li>
-            <Link isExternal href="https://aaardvarkaccessibility.com/wcag-plain-english/">WCAG Plain English</Link>
-          </li>
-        </ul>
+        <Heading level="h3" size="h6">Contact Details</Heading>
+        <div class="gap-2xs flex items-center">
+          <Icon aria-hidden="true" name="lucide:phone" size={20} class="shrink-0" />
+          <p>
+            <span class="font-bold">Phone:</span>
+            <Link href="tel:01214711583">+44 121 471 1583</Link>
+          </p>
+        </div>
+
+        <div class="gap-2xs flex items-center">
+          <Icon aria-hidden="true" name="lucide:mail" size={20} class="shrink-0" />
+          <p>
+            <span class="font-bold">Email:</span>
+            <Link href="mailto:info@northfieldfestival.org.uk">info@northfieldfestival.org.uk</Link>
+          </p>
+        </div>
       </div>
       <div class="flex flex-col gap-4">
         <Logo loading="lazy" />

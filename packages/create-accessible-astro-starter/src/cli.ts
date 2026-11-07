@@ -2,7 +2,7 @@ import * as p from '@clack/prompts'
 import { relative, resolve } from 'node:path'
 import { buildManifest } from './presets.js'
 import { parseCliArgs, getDefaultLauncher } from './options.js'
-import { scaffoldProject } from './scaffold.js'
+import { scaffoldSection } from './scaffold.js'
 import { outroMessage, renderIntro } from './cli-output.js'
 import type { ParsedFlags, Preset, ResolvedOptions } from './types.js'
 import { deriveSiteNameFromDirectory, formatPresetLabel, slugifySiteName } from './utils.js'
@@ -19,12 +19,12 @@ function unwrapPrompt<T>(value: T | symbol): T {
 async function promptForTargetDir(): Promise<string> {
   return unwrapPrompt(
     await p.text({
-      message: 'Where should we create your new project?',
+      message: 'Where should we create your new section?',
       placeholder: './my-accessible-site',
       initialValue: './my-accessible-site',
       validate(value) {
         if (!value.trim()) {
-          return 'Please choose a project directory.'
+          return 'Please choose a section directory.'
         }
 
         return undefined
@@ -57,7 +57,7 @@ async function promptForPreset(): Promise<Preset> {
         {
           value: 'full',
           label: 'Full',
-          hint: 'Blog, portfolio, and all demo pages',
+          hint: 'Blog, syllabus, and all demo pages',
         },
         {
           value: 'blog',
@@ -65,9 +65,9 @@ async function promptForPreset(): Promise<Preset> {
           hint: 'Content site with blog + contact pages',
         },
         {
-          value: 'portfolio',
+          value: 'syllabus',
           label: 'Portfolio',
-          hint: 'Project showcase + contact pages',
+          hint: 'Section showcase + contact pages',
         },
         {
           value: 'minimal',
@@ -126,8 +126,8 @@ export async function run(argv = process.argv.slice(2)): Promise<void> {
   const manifest = buildManifest(options)
   const spinner = p.spinner()
 
-  spinner.start('Scaffolding your project')
-  await scaffoldProject(options, manifest)
+  spinner.start('Scaffolding your section')
+  await scaffoldSection(options, manifest)
   spinner.stop(`Created ${options.siteName}`)
 
   const relativeFromCwd = relative(process.cwd(), options.targetDir).replace(/\\/g, '/')
@@ -145,7 +145,7 @@ export async function run(argv = process.argv.slice(2)): Promise<void> {
       'npm install',
       'npm run dev',
     ].join('\n'),
-    'Project ready',
+    'Section ready',
   )
 
   p.outro(outroMessage)
