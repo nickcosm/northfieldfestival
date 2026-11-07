@@ -8,12 +8,12 @@ import type { CollectionEntry } from 'astro:content'
 import { slugify } from '@utils/slugify'
 
 // Import images directly for optimization
-import sectionImage1 from '@assets/images/sections/section-image-1.png'
-import sectionImage2 from '@assets/images/sections/section-image-2.png'
-import sectionImage3 from '@assets/images/sections/section-image-3.png'
-import sectionImage4 from '@assets/images/sections/section-image-4.png'
-import sectionImage5 from '@assets/images/sections/section-image-5.png'
-import sectionImage6 from '@assets/images/sections/section-image-6.png'
+import sectionImage1 from '@assets/images/sections/any-instrument.webp'
+import sectionImage2 from '@assets/images/sections/instrument-ensemble.webp'
+import sectionImage3 from '@assets/images/sections/piano.webp'
+import sectionImage4 from '@assets/images/sections/speech.webp'
+import sectionImage5 from '@assets/images/sections/strings.webp'
+import sectionImage6 from '@assets/images/sections/vocals.webp'
 
 export const getStaticPaths = (async ({ paginate }) => {
   const sections = await getCollection('sections')
