@@ -1,0 +1,56 @@
+// Table styles for content tables (Markdown/MDX and plain markup).
+// Scoped to tables without a class so component tables (e.g. DataTable) are unaffected.
+// All colors use light-dark() tokens and respond to the .darkmode toggle.
+
+// Wrap content tables so wide tables scroll horizontally on small screens
+// instead of breaking the layout.
+.space-content:has(> table:not([class])) {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table:not([class]) {
+  border-collapse: collapse;
+  border: 1px solid var(--border-color-subtle);
+  border-radius: var(--radius-s);
+  background-color: var(--background-color);
+  font-size: var(--font-size--1);
+
+  caption {
+    padding-block-end: var(--space-xs);
+    color: light-dark(var(--color-neutral-700), var(--color-neutral-400));
+    font-style: italic;
+    text-align: start;
+  }
+
+  th,
+  td {
+    border: 1px solid var(--border-color-subtle);
+    padding: var(--space-2xs) var(--space-xs);
+    text-align: start;
+    vertical-align: top;
+  }
+
+  thead th {
+    background-color: light-dark(var(--color-neutral-200), var(--color-neutral-800));
+    font-weight: 700;
+  }
+
+  tbody {
+    // zebra striping for readability
+    tr:nth-child(even) {
+      background-color: light-dark(var(--color-neutral-200), var(--color-neutral-800));
+    }
+
+    // row hover, respecting users who prefer reduced motion
+    @media (prefers-reduced-motion: no-preference) {
+      tr {
+        transition: background-color var(--animation-speed-fast) var(--cubic-bezier);
+      }
+    }
+
+    tr:hover {
+      background-color: light-dark(var(--color-neutral-300), var(--color-neutral-700));
+    }
+  }
+}
