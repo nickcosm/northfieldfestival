@@ -38,18 +38,13 @@ export default defineThemeConfig({
         items: [
           {
             label: 'Apply by Post',
-            href: '/apply-by-post',
+            href: '/syllabus',
           },
           {
             label: 'Apply Online',
             href: 'https://www.cognitoforms.com/NorthfieldFestivalOfMusicSpeech/OnlineApplicationNorthfieldFestival',
           },
         ],
-      },
-      {
-        type: 'link',
-        label: 'Blog',
-        href: '/blog',
       },
       {
         label: 'Policies & Rules',

@@ -4,9 +4,12 @@ import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
 
 // Import images directly for optimization
-import sectionImage1 from '@assets/images/sections/section-image-1.png'
-import sectionImage2 from '@assets/images/sections/section-image-2.png'
-import sectionImage3 from '@assets/images/sections/section-image-3.png'
+import sectionImage1 from '@assets/images/sections/any-instrument.webp'
+import sectionImage2 from '@assets/images/sections/instrument-ensemble.webp'
+import sectionImage3 from '@assets/images/sections/piano.webp'
+import sectionImage4 from '@assets/images/sections/speech.webp'
+import sectionImage5 from '@assets/images/sections/strings.webp'
+import sectionImage6 from '@assets/images/sections/vocal.webp'
 
 /**
  * FeaturedSections Component
@@ -30,11 +33,11 @@ interface Props {
   title?: string
 }
 
-const { class: className, limit = 3, title = 'Featured sections' } = Astro.props
+const { class: className, limit = 6, title = 'Featured sections' } = Astro.props
 
 // Get sections from content collection
 const sections = await getCollection('sections')
-const sectionImages = [sectionImage1, sectionImage2, sectionImage3]
+const sectionImages = [sectionImage1, sectionImage2, sectionImage3, sectionImage4, sectionImage5, sectionImage6]
 
 // Limit sections and add featured images
 const featuredSections = sections.slice(0, limit).map((section, index) => ({
