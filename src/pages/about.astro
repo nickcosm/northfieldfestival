@@ -90,14 +90,14 @@ import { Icon } from 'astro-icon/components'
 
         <Heading level="h4">Chair</Heading>
         <AvatarGroup display="grid" gridItemsSize="300px" gridGap="2rem">
-          <Avatar initials="EA" title="Mrs Eloise Akehurst" subtitle="Chair" />
-          <Link href="mailto:info@northfieldfestival.org.uk">Send Email</Link>
-          <Avatar initials="LA" title="Mrs Lucy Akehurst" subtitle="Vice Chair" />
-          <Link href="mailto:lucy.akehurst@gmail.com">Send Email</Link>
-          <Avatar initials="LL" title="Mrs Lin Le" subtitle="Treasurer" />
-          <Link href="mailto:chrisslele@hotmail.com">Send Email</Link>
-          <Avatar initials="JL" title="Mrs Justine Liu" subtitle="Secretary" />
-          <Link href="mailto:justineyyliu@gmail.com">Send Email</Link>
+          <div class="grid-item"><Avatar initials="EA" title="Mrs Eloise Akehurst" subtitle="Chair" />
+          <Link href="mailto:info@northfieldfestival.org.uk">Send Email</Link></div>
+          <div class="grid-item"><Avatar initials="LA" title="Mrs Lucy Akehurst" subtitle="Vice Chair" />
+          <Link href="mailto:lucy.akehurst@gmail.com">Send Email</Link></div>
+          <div class="grid-item"><Avatar initials="LL" title="Mrs Lin Le" subtitle="Treasurer" />
+          <Link href="mailto:chrisslele@hotmail.com">Send Email</Link></div>
+          <div class="grid-item"><Avatar initials="JL" title="Mrs Justine Liu" subtitle="Secretary" />
+          <Link href="mailto:justineyyliu@gmail.com">Send Email</Link></div>
         </AvatarGroup>
         <p>
           <strong>Mrs Eloise Akehurst</strong><br /><Icon aria-hidden="true" name="lucide:mail" size={16} /><Link
