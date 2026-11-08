@@ -1,7 +1,7 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
-import { Heading, Link } from 'accessible-astro-components'
+import { Heading, Link, Avatar, AvatarGroup } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
 ---
 
@@ -57,24 +57,24 @@ import { Icon } from 'astro-icon/components'
             isExternal>here</Link
           >.
         </p>
-        <Heading level="h2">Security</Heading>
+        <Heading level="h3">Security</Heading>
         <p>The committee cannot be held responsible for loss of personal effects during the Festival.</p>
 
-        <Heading level="h2">Additional Needs</Heading>
+        <Heading level="h3">Additional Needs</Heading>
         <p>Please contact us at <Link
             href="mailto:info@northfieldfestival.org.uk">info@northfieldfestival.org.uk</Link> with any information about support a performer may require.</p>
 
-        <Heading level="h2">Admission</Heading>
+        <Heading level="h3">Admission</Heading>
         <p>There is an entrance fee of £5 for non-performers. (Children Free). <br />Programmes on the door: £3.00.</p>
 
-        <Heading level="h2">Venue</Heading>
+        <Heading level="h3">Venue</Heading>
         <p><Link href="https://maps.app.goo.gl/PL3nDLWTvS4nhibc7" isExternal>Bishop Challoner Catholic College, Institute Road, Kings Heath, B14 7EG</Link></p>
       
 
-        <Heading level="h2">Officers &amp; Officials</Heading>
+        <Heading level="h3">Officers &amp; Officials</Heading>
         <p><strong>President</strong>:<br />Philip Dukes F.G.S.M., A.R.A.M.</p>
         <p><strong>Hon. Vice President</strong>:<br />Mrs Doreen Baggett</p>
-        <Heading level="h3">Friends of Northfield Festival</Heading>
+        <Heading level="h4">Friends of Northfield Festival</Heading>
         <p>
           Sally Allsop, Neil & Doreen Baggett, Miriam Banting, Mr Roger Barber, Crystal Chan, Mr Alan Cull, Mr Martin
           Cull Amit Deshpande, Mr Philip Dukes, Sheng Fu Yiru Jia & Yong Sheng Ge, Margaret Hanson, Pei-Chieh Hsieh,
@@ -84,19 +84,29 @@ import { Icon } from 'astro-icon/components'
           Shan He Zhang.
         </p>
 
-        <Heading level="h2">Charities that support the festival</Heading>
+        <Heading level="h3">Charities that support the festival</Heading>
         <p>The William A Cadbury Trust, The M &amp; H Cadbury Trust, Baron Davenport's Charity, The Grimmitt Trust</p>
-        <Heading level="h2">Festival Committee</Heading>
+        <Heading level="h3">Festival Committee</Heading>
 
-        <Heading level="h3">Chair</Heading>
+        <Heading level="h4">Chair</Heading>
+        <AvatarGroup display="grid" gridItemsSize="300px" gridGap="2rem">
+          <Avatar initials="EA" title="Mrs Eloise Akehurst" subtitle="Chair" />
+          <Link href="mailto:info@northfieldfestival.org.uk">Send Email</Link>
+          <Avatar initials="LA" title="Mrs Lucy Akehurst" subtitle="Vice Chair" />
+          <Link href="mailto:lucy.akehurst@gmail.com">Send Email</Link>
+          <Avatar initials="LL" title="Mrs Lin Le" subtitle="Treasurer" />
+          <Link href="mailto:chrisslele@hotmail.com">Send Email</Link>
+          <Avatar initials="JL" title="Mrs Justine Liu" subtitle="Secretary" />
+          <Link href="mailto:justineyyliu@gmail.com">Send Email</Link>
+        </AvatarGroup>
         <p>
-          <strong>Ms Eloise Akehurst</strong><br /><Icon aria-hidden="true" name="lucide:mail" size={16} /><Link
+          <strong>Mrs Eloise Akehurst</strong><br /><Icon aria-hidden="true" name="lucide:mail" size={16} /><Link
             href="mailto:info@northfieldfestival.org.uk">Send Email</Link
           ><br /><Icon aria-hidden="true" name="lucide:phone" size={16} /><strong>Phone:</strong> <Link
             href="tel:01214711583">0121 471 1583</Link
           >
         </p>
-        <Heading level="h3">Vice Chair</Heading>
+        <Heading level="h4">Vice Chair</Heading>
         <p>
           <strong>Mrs L Akehurst</strong><br /><Icon aria-hidden="true" name="lucide:mail" size={16} /><Link
             href="mailto:lucy.akehurst@gmail.com">Send Email</Link
@@ -104,7 +114,7 @@ import { Icon } from 'astro-icon/components'
             href="tel:01214711583">0121 471 1583</Link
           >
         </p>
-        <Heading level="h3">Treasurer</Heading>
+        <Heading level="h4">Treasurer</Heading>
         <p>
           <strong>Mrs Lin Le</strong><br /><Icon aria-hidden="true" name="lucide:mail" size={16} /><Link
             href="mailto:chrisslele@hotmail.com">Send Email</Link
@@ -112,7 +122,7 @@ import { Icon } from 'astro-icon/components'
             href="tel:01214766182">0121 476 6182</Link
           >
         </p>
-        <Heading level="h3">Secretary</Heading>
+        <Heading level="h4">Secretary</Heading>
         <p>
           <strong>Mrs Justine Liu</strong><br /><Icon aria-hidden="true" name="lucide:mail" size={16} /><Link
             href="mailto:justineyyliu@gmail.com">Send Email</Link
@@ -120,16 +130,16 @@ import { Icon } from 'astro-icon/components'
             href="tel:01564771287">01564 771 287</Link
           >
         </p>
-        <Heading level="h2">Members</Heading>
+        <Heading level="h3">Members</Heading>
         <p>Mrs Miriam Banting</p>
         <p>Mrs Pat Finney</p>
         <p>Mrs Jas Sandhu</p>
         <p>Mrs Ann Tran</p>
-        <Heading level="h2">Committee Associates</Heading>
+        <Heading level="h3">Committee Associates</Heading>
         <p>Mr Pat Akehurst</p>
         <p>Mrs Caroline Wright</p>
 
-        <Heading level="h2">Contact Information</Heading>
+        <Heading level="h3">Contact Information</Heading>
         <div class="gap-2xs flex items-center">
           <Icon aria-hidden="true" name="lucide:phone" size={20} class="shrink-0" />
           <p>
