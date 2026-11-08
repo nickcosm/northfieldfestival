@@ -28,12 +28,12 @@ interface Props {
   limit?: number
   /**
    * The title for the section
-   * @default "Featured sections"
+   * @default "Syllabus"
    */
   title?: string
 }
 
-const { class: className, limit = 6, title = 'Featured sections' } = Astro.props
+const { class: className, limit = 6, title = 'Syllabus' } = Astro.props
 
 // Get sections from content collection
 const sections = await getCollection('sections')
