@@ -15,7 +15,7 @@ interface Props {
   src?: string
 }
 
-const { src = '/1.webp' }: Props = Astro.props
+const { src = '/birmingham-bullring.webp' }: Props = Astro.props
 ---
 
 <section class="hero my-24">
@@ -49,7 +49,7 @@ const { src = '/1.webp' }: Props = Astro.props
           </Link>
         </div>
       </div>
-      <Image class="hidden lg:block" src={src} alt="" decoding="async" width={800} height={600} loading="eager" />
+      <Image class="hidden lg:block" src={src} alt="" decoding="async" width={800} height={800} loading="eager" />
     </div>
   </div>
 </section>
