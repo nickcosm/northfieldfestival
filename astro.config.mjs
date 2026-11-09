@@ -38,7 +38,7 @@ const viteConfig = {
 // https://astro.build/config
 export default defineConfig({
   compressHTML: true,
-  site: 'https://accessible-astro-starter.incluud.dev',
+  site: 'https://www.northfieldfestival.org.uk',
   integrations: [compress(), icon(), mdx(), sitemap()],
   vite: viteConfig,
   env: {
