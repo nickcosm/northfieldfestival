@@ -16,7 +16,7 @@ export default defineThemeConfig({
   colors: {
     primary: '#1d57a1',
     secondary: '#f5f630',
-    neutral: '#e9e6e9',
+    neutral: '#b9bec4',
     outline: '#fffd29',
   },
   navigation: {
