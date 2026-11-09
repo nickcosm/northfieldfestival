@@ -1,5 +1,5 @@
 ---
-import { Link } from 'accessible-astro-components'
+import { Link, Media } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
 
@@ -49,7 +49,7 @@ const { src = '/birmingham-bullring.webp' }: Props = Astro.props
           </Link>
         </div>
       </div>
-      <Image class="hidden lg:block" src={src} alt="" decoding="async" width={800} height={800} loading="eager" />
+      <Media class="hidden lg:block" src={src} alt="" ratio="1:1" decoding="async" width={800} height={800} loading="eager" fetchpriority="high" />
     </div>
   </div>
 </section>
