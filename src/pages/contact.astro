@@ -22,8 +22,13 @@ import { Icon } from 'astro-icon/components'
   <section class="container">
     <div class="grid grid-cols-1 gap-32 md:grid-cols-2">
       <div class="space-content">
-        <Form name="contact" action="/thank-you" method="post">
+        <Form name="contact" 
+              action="https://api.web3forms.com/submit" 
+              method="post">
           <!-- Input field with custom validation message -->
+          <!-- Required by Web3Forms -->
+          <input type="hidden" name="access_key" value="6ad6c2dd-6e84-4be5-80cb-94b25311936b" /> 
+          <input type="hidden" name="redirect" value="/thank-you" />
           <Input
             name="firstname"
             label="First name"
