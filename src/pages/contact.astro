@@ -40,7 +40,13 @@ import { Icon } from 'astro-icon/components'
           <Input name="email" label="Email address" type="email" required autocomplete="email" />
 
           <!-- Custom validation with pattern -->
-          <Input name="phone" label="Phone number" type="tel" required data-validation-pattern="^[0-9]{11}$" />
+          <Input 
+            name="phone" 
+            label="Phone number" 
+            type="tel" 
+            required 
+            autocomplete="tel"
+            data-validation="Enter a UK phone number, for example 07123 456789 or +44 7123 456789" />
 
           <Textarea name="message" label="Message" required />
 
