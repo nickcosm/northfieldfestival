@@ -1,6 +1,7 @@
+
 # Northfield Festival
 
-<img width="1200" height="627" alt="social-preview-image" src="https://github.com/user-attachments/assets/bcd886fb-dd70-4a81-ac73-e138f3ce8d35" />
+<img width="1200" height="750" alt="social-preview-image" src="https://github.com/user-attachments/assets/baa6717d-b9b4-4265-8ef4-e521dc1a866c" />
 
 [![Built with Astro](https://astro.badg.es/v2/built-with-astro/small.svg)](https://astro.build)
 
