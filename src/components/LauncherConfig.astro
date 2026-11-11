@@ -1,16 +1,39 @@
 ---
+
+import { Launcher as PackageLauncher } from 'accessible-astro-launcher'
+
+const Launcher = PackageLauncher as (
+  props: { id: string; children?: unknown },
+) => ReturnType<typeof PackageLauncher>
+
 import {
-  Launcher,
-  LauncherPreferences,
-  LauncherSwitch,
-  LauncherNav,
-  LauncherLink,
+  LauncherPreferences as PackageLauncherPreferences,
+  LauncherSwitch as PackageLauncherSwitch,
+  LauncherNav as PackageLauncherNav,
+  LauncherLink as PackageLauncherLink
 } from 'accessible-astro-launcher'
+
+const LauncherPreferences = PackageLauncherPreferences as (
+  props: { label: string; children?: unknown },
+) => ReturnType<typeof PackageLauncherPreferences>
+
+const LauncherSwitch = PackageLauncherSwitch as (
+  props: { label: string; onAction: string; children?: unknown },
+) => ReturnType<typeof PackageLauncherSwitch>
+
 import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
 import { BLOG_API_URL } from 'astro:env/server'
 import themeConfig from '@theme-config'
 import { slugify } from '@utils/slugify'
+
+const LauncherNav = PackageLauncherNav as (
+  props: { label: string; keywords: string; children?: unknown },
+) => ReturnType<typeof PackageLauncherNav>
+
+const LauncherLink = PackageLauncherLink as (
+  props: { label: string; href: string; external?: boolean; children?: unknown },
+) => ReturnType<typeof PackageLauncherLink>
 
 /**
  * Launcher preferences for accessibility and theme.
@@ -171,7 +194,7 @@ const launcherAccessibleAstroSections = [
       ))
     }
   </LauncherPreferences>
-  <LauncherNav label="Navigate to">
+  <LauncherNav label="Navigate to" keywords="navigation pages">
     {
       launcherNavigationItems.map((item) => (
         <LauncherLink
@@ -184,7 +207,7 @@ const launcherAccessibleAstroSections = [
   </LauncherNav>
   {
     launcherBlogItems.length > 0 && (
-      <LauncherNav label="Blog posts">
+      <LauncherNav label="Blog posts" keywords="blog articles">
         {launcherBlogItems.map((item) => (
           <LauncherLink label={item.label} href={item.href}>
             <Icon slot="icon" aria-hidden="true" name="lucide:scroll-text" size="16" />
@@ -195,9 +218,9 @@ const launcherAccessibleAstroSections = [
   }
   {
     launcherSectionItems.length > 0 && (
-      <LauncherNav label="Sections">
+      <LauncherNav label="Sections" keywords="sections syllabus">
         {launcherSectionItems.map((item) => (
-          <LauncherLink label={item.label} href={item.href} keywords={item.keywords}>
+          <LauncherLink label={item.label} href={item.href}>
             <Icon slot="icon" aria-hidden="true" name="lucide:bookmark" size="16" />
           </LauncherLink>
         ))}
@@ -206,7 +229,7 @@ const launcherAccessibleAstroSections = [
   }
   {
     launcherAccessibleAstroSections.length > 0 && (
-      <LauncherNav label="Accessible Astro Sections">
+      <LauncherNav label="Accessible Astro Sections" keywords="accessible astro projects">
         {launcherAccessibleAstroSections.map((item) => (
           <LauncherLink label={item.label} href={item.href}>
             <Icon slot="icon" aria-hidden="true" name="lucide:external-link" size="16" />
@@ -217,7 +240,7 @@ const launcherAccessibleAstroSections = [
   }
   {
     launcherSocialItems.length > 0 && (
-      <LauncherNav label="Socials">
+      <LauncherNav label="Socials" keywords="social media links">
         {launcherSocialItems.map((item) => (
           <LauncherLink
             label={item.label}
