@@ -58,7 +58,7 @@ const launcherPreferenceItems = [
  * Maximum number of blog posts to show in the launcher.
  * @type {number}
  */
-const maxLauncherBlogPosts = 30
+const maxLauncherBlogPosts = 0
 
 /**
  * Truncate blog post title to the first four words.
@@ -206,33 +206,11 @@ const launcherAccessibleAstroSections = [
     }
   </LauncherNav>
   {
-    launcherBlogItems.length > 0 && (
-      <LauncherNav label="Blog posts" keywords="blog articles">
-        {launcherBlogItems.map((item) => (
-          <LauncherLink label={item.label} href={item.href}>
-            <Icon slot="icon" aria-hidden="true" name="lucide:scroll-text" size="16" />
-          </LauncherLink>
-        ))}
-      </LauncherNav>
-    )
-  }
-  {
     launcherSectionItems.length > 0 && (
       <LauncherNav label="Sections" keywords="sections syllabus">
         {launcherSectionItems.map((item) => (
           <LauncherLink label={item.label} href={item.href}>
             <Icon slot="icon" aria-hidden="true" name="lucide:bookmark" size="16" />
-          </LauncherLink>
-        ))}
-      </LauncherNav>
-    )
-  }
-  {
-    launcherAccessibleAstroSections.length > 0 && (
-      <LauncherNav label="Accessible Astro Sections" keywords="accessible astro projects">
-        {launcherAccessibleAstroSections.map((item) => (
-          <LauncherLink label={item.label} href={item.href}>
-            <Icon slot="icon" aria-hidden="true" name="lucide:external-link" size="16" />
           </LauncherLink>
         ))}
       </LauncherNav>
